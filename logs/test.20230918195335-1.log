@@ -1,0 +1,50 @@
+2023-09-18 19:53:35,433 - teradata.udaexec - INFO - Initializing UdaExec...
+2023-09-18 19:53:35,434 - teradata.udaexec - INFO - Reading config files: ['/etc/udaexec.ini: Not Found', '/Users/nol/udaexec.ini: Not Found', '/Users/nol/PycharmProjects/flaskProject1/udaexec.ini: Not Found']
+2023-09-18 19:53:35,434 - teradata.udaexec - INFO - No previous run number found as /Users/nol/PycharmProjects/flaskProject1/.runNumber does not exist. Initializing run number to 1
+2023-09-18 19:53:35,434 - teradata.udaexec - INFO - Cleaning up log files older than 90 days.
+2023-09-18 19:53:35,434 - teradata.udaexec - INFO - Removed 0 log files.
+2023-09-18 19:53:35,497 - teradata.udaexec - INFO - Checkpoint file not found: /Users/nol/PycharmProjects/flaskProject1/test.checkpoint
+2023-09-18 19:53:35,498 - teradata.udaexec - INFO - No previous checkpoint found, executing from beginning...
+2023-09-18 19:53:35,498 - teradata.udaexec - INFO - Execution Details:
+/********************************************************************************
+ * Application Name: test
+ *          Version: 1.0
+ *       Run Number: 20230918195335-1
+ *             Host: wangzaiwifi.local
+ *         Platform: macOS-10.16-x86_64-i386-64bit
+ *          OS User: nol
+ *   Python Version: 3.9.0
+ *  Python Compiler: Clang 6.0 (clang-600.0.57)
+ *     Python Build: ('v3.9.0:9cf6752276', 'Oct  5 2020 11:29:23')
+ *  UdaExec Version: 15.10.0.21
+ *     Program Name: /Users/nol/PycharmProjects/flaskProject1/test.py
+ *      Working Dir: /Users/nol/PycharmProjects/flaskProject1
+ *          Log Dir: /Users/nol/PycharmProjects/flaskProject1/logs
+ *         Log File: /Users/nol/PycharmProjects/flaskProject1/logs/test.20230918195335-1.log
+ *     Config Files: ['/etc/udaexec.ini: Not Found', '/Users/nol/udaexec.ini: Not Found', '/Users/nol/PycharmProjects/flaskProject1/udaexec.ini: Not Found']
+ *      Query Bands: ApplicationName=test;Version=1.0;JobID=20230918195335-1;ClientUser=nol;Production=False;udaAppLogFile=/Users/nol/PycharmProjects/flaskProject1/logs/test.20230918195335-1.log;UtilityName=PyTd;UtilityVersion=15.10.0.21
+********************************************************************************/
+2023-09-18 19:53:35,531 - teradata.udaexec - INFO - Creating connection: {'method': 'odbc', 'system': '127.0.0.1', 'username': 'root', 'password': 'XXXXXX', 'driver': 'Teradata'}
+2023-09-18 19:53:35,531 - teradata.tdodbc - INFO - Loading ODBC Library: libiodbc.dylib
+2023-09-18 19:53:35,541 - teradata.tdodbc - INFO - Available drivers: 
+2023-09-18 19:53:35,541 - teradata.udaexec - ERROR - Unable to create connection: {'method': 'odbc', 'system': '127.0.0.1', 'username': 'root', 'password': 'XXXXXX', 'driver': 'Teradata'}
+Traceback (most recent call last):
+  File "/Users/nol/PycharmProjects/flaskProject/venv/lib/python3.9/site-packages/teradata/udaexec.py", line 180, in connect
+    self, tdodbc.connect(queryBands=self.queryBands,
+  File "/Users/nol/PycharmProjects/flaskProject/venv/lib/python3.9/site-packages/teradata/tdodbc.py", line 427, in __init__
+    connectParams["DRIVER"] = determineDriver(dbType, driver)
+  File "/Users/nol/PycharmProjects/flaskProject/venv/lib/python3.9/site-packages/teradata/tdodbc.py", line 378, in determineDriver
+    raise InterfaceError(
+teradata.api.InterfaceError: ('DRIVER_NOT_FOUND', "No driver found with name 'Teradata'.  Available drivers: ")
+2023-09-18 19:53:35,544 - teradata.udaexec - ERROR - Uncaught exception
+Traceback (most recent call last):
+  File "/Users/nol/PycharmProjects/flaskProject1/test.py", line 32, in <module>
+    td_engine = td.connect(method="odbc",system=hostname, username=user,password=pasw,driver="Teradata")
+  File "/Users/nol/PycharmProjects/flaskProject/venv/lib/python3.9/site-packages/teradata/udaexec.py", line 180, in connect
+    self, tdodbc.connect(queryBands=self.queryBands,
+  File "/Users/nol/PycharmProjects/flaskProject/venv/lib/python3.9/site-packages/teradata/tdodbc.py", line 427, in __init__
+    connectParams["DRIVER"] = determineDriver(dbType, driver)
+  File "/Users/nol/PycharmProjects/flaskProject/venv/lib/python3.9/site-packages/teradata/tdodbc.py", line 378, in determineDriver
+    raise InterfaceError(
+teradata.api.InterfaceError: ('DRIVER_NOT_FOUND', "No driver found with name 'Teradata'.  Available drivers: ")
+2023-09-18 19:53:35,545 - teradata.udaexec - INFO - UdaExec exiting.
