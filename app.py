@@ -26,9 +26,9 @@ def newspage():
     return render_template("news.html", data=newsContent)
 
 
-@app.route('/products')  # 增加一个product页面
-def productpage():
-    return render_template("products.html")
+@app.route('/products/<a>')  # 增加一个product页面
+def productpage(a):
+    return render_template("products.html", data=a)
 
 
 if __name__ == '__main__':
