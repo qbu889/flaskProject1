@@ -12,7 +12,7 @@
 <div style="width:600px;height:30px">
     <div class="rr"> welcome to my webpage</div>
     <div class="rr">
-        {% if session['username'] == 'cao'  %}     {#如果session中用户名为cao，以及注销链接#}
+        {% if session['username'] == 'lzw'  %}     {#如果session中用户名为cao，以及注销链接#}
         <a href="#">{{ session['username']}}</a>
         <a href="#">注销</a>
         {% else %}                  {#否则就显示登录与注册链接#}
