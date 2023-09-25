@@ -16,10 +16,8 @@ def hello(name):
 
 @app.route('/')
 def index():
-    msg="my name is bigdata , PuPu up!"
-    return render_template("index.html", data=msg)  #加入变量传递
-
-
+    msg = ""
+    return render_template("index.html", data=msg)  # 加入变量传递
 
 
 @app.route('/news')  # 增加一个news页面
@@ -28,9 +26,9 @@ def newspage():
     return render_template("news.html", data=newsContent)
 
 
-@app.route('/product')  # 增加一个product页面
-def productpage():
-    return render_template("products.html")
+@app.route('/product/<a>')  # 增加一个product页面
+def productpage(a):
+    return render_template("products.html", data=a)
 
 
 @app.route('/login')
