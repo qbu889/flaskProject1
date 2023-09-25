@@ -15,12 +15,22 @@ def index():
 
 @app.route('/news')
 def newspage():
+    newsreal = []
     # 导入dbutil模块，就是上面这个文件
     db = dbUtils('web2023.db')  # 链接web2020数据库
     sql = 'select content from news'  # 组装查询sql语句
-    newslist = db.db_action(sql, 1)  # 查询处理并返回列表
+    newslists = db.db_action(sql, 1)
+    # rows = cursor.fetchall()
+    forcount = len(newslists)
+    for i in range(forcount):
+        text = newslists[i][0]
+        newsreal.append(text)
+        # print(newsreal)
+
+    # 查询处理并返回列表
+    # print(newsreal)
     db.close()  # 关闭数据库
-    return render_template("news.html", data=newslist)  # 将数据传递到news.html页面中
+    return render_template("news.html", data=newsreal)  # 将数据传递到news.html页面中
 
 
 @app.route('/product/<a>')  # 增加一个product页面
