@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session, url_for
 
 app = Flask(__name__)
+app.secret_key = 'any random string'  # 这里我们直接给定一个密钥
 
 
 @app.route('/')
@@ -24,16 +25,16 @@ def productpage(a):
 def loginpage():
     return render_template("login.html")
 
-
 @app.route('/loginProcess', methods=['POST', 'GET'])
 def loginProcesspage():
     if request.method == 'POST':
-        nm = request.form['nm']  # 获取姓名文本框的输入值
-        pwd = request.form['pwd']  # 获取密码框的输入值
+        nm = request.form['nm']
+        pwd = request.form['pwd']
         if nm == 'pupu' and pwd == '123':
-            return render_template("index.html", data=nm)  # 使用跳转html页面路由
+            session['username'] = nm  # 使用session存储方式，session默认为数组，给定key和value即可
+            return redirect(url_for('index'))  # 重定向跳转到首页
         else:
-            return '用户或者密码不匹配！'
+            return '用户或者密码不匹配!'
 
 
 if __name__ == "__main__":
