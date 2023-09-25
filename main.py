@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, url_for
+from flask import Flask, render_template, request, session, url_for, redirect
 
 app = Flask(__name__)
 app.secret_key = 'any random string'  # 这里我们直接给定一个密钥
@@ -6,7 +6,7 @@ app.secret_key = 'any random string'  # 这里我们直接给定一个密钥
 
 @app.route('/')
 def index():
-    msg = "my name is caojianhua, China up!"
+    msg = ""
     return render_template("index.html", data=msg)
 
 
@@ -38,4 +38,4 @@ def loginProcesspage():
 
 
 if __name__ == "__main__":
-    app.run(port=2020, host="127.0.0.1", debug=True)
+    app.run(port=2023, host="127.0.0.1", debug=True)
