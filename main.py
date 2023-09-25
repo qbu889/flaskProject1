@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -18,6 +18,22 @@ def newspage():
 @app.route('/product/<a>')  # 增加一个product页面
 def productpage(a):
     return render_template("products.html", data=a)
+
+
+@app.route('/login')
+def loginpage():
+    return render_template("login.html")
+
+
+@app.route('/loginProcess', methods=['POST', 'GET'])
+def loginProcesspage():
+    if request.method == 'POST':
+        nm = request.form['nm']  # 获取姓名文本框的输入值
+        pwd = request.form['pwd']  # 获取密码框的输入值
+        if nm == 'pupu' and pwd == '123':
+            return render_template("index.html", data=nm)  # 使用跳转html页面路由
+        else:
+            return '用户或者密码不匹配！'
 
 
 if __name__ == "__main__":
