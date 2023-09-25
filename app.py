@@ -16,9 +16,12 @@ def hello(name):
 
 @app.route('/')
 def index():
+    # return 'welcome to my webpage!'
+    return '<h3>welcome to my webpage!</h3><hr><p style="color:red">输出语句测试</p><hr><p style="color:red">输出语句测试2</p>'
+
     # return render_template("index.html")   #调用render_template函数，传入html文件参数
-    msg = "my name is caojianhua, China up!"
-    return render_template("index.html", data=msg)  # 加入变量传递
+    # msg = "my name is caojianhua, China up!"
+    # return render_template("index.html", data=msg)  # 加入变量传递
 
 
 @app.route('/news')  # 增加一个news页面
