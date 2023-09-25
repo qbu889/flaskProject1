@@ -1,5 +1,8 @@
 from flask import Flask, render_template, request, session, url_for, redirect
 
+
+from utils.dbutil import dbUtils
+
 app = Flask(__name__)
 app.secret_key = 'any random string'  # 这里我们直接给定一个密钥
 
@@ -10,10 +13,14 @@ def index():
     return render_template("index.html", data=msg)
 
 
-@app.route('/news')  # 增加一个news页面
+@app.route('/news')
 def newspage():
-    newsContent = "全国上下一心支持武汉，武汉加油！"
-    return render_template("news.html", data=newsContent)
+    # 导入dbutil模块，就是上面这个文件
+    db = dbUtils('web2023.db')  # 链接web2020数据库
+    sql = 'select content from news'  # 组装查询sql语句
+    newslist = db.db_action(sql, 1)  # 查询处理并返回列表
+    db.close()  # 关闭数据库
+    return render_template("news.html", data=newslist)  # 将数据传递到news.html页面中
 
 
 @app.route('/product/<a>')  # 增加一个product页面
@@ -24,6 +31,7 @@ def productpage(a):
 @app.route('/login')
 def loginpage():
     return render_template("login.html")
+
 
 @app.route('/loginProcess', methods=['POST', 'GET'])
 def loginProcesspage():
